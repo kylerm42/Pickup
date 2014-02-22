@@ -1,8 +1,14 @@
 <form action="<%= events_url %>" method="POST" accept-charset="utf-8">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
 	<input type="hidden" name="event[latitude]" value="1">
 	<input type="hidden" name="event[longitude]" value="1">
+
+	<label for="event_title">Type of event</label>
+	<input type="text" id="event_title" name="event[title]"><br>
+
+	<label id="event_address">Address</label>
+	<input type="text", name="event[address]" id="event_address"><br>
+
 	<label for="event_day">Day of event</label>
 	<select name="event[date]" id="event_day">
 		<% %w{Monday Tuesday Wednesday Thursday Friday Saturday Sunday}.each do |day| %>
@@ -13,8 +19,7 @@
 	<label for="event_time">Time of event</label>
 	<input type="time" name="event[time]" id="event_time"><br>
 
-	<label for="event_title">Type of event</label>
-	<input type="text" id="event_title" name="event[title]"><br>
+
 
 	<label for="event_deets">Deets</label>
 	<input type="textarea" id="event_deets" name="event[deets]" rows="3" cols="40">
