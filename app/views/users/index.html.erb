@@ -1,0 +1,5 @@
+<%= @user.uid %>
+<br>
+<%= @user2.uid %>
+
+<%= @fb_friends.select{|friend| friend.identifier == @user.uid}.to_json %>
