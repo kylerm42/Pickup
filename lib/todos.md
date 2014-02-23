@@ -9,8 +9,7 @@ Kev/Andrew
 ~~Show only day name (e.g. friday)~~ extra day for today
 login page - show this for "I'm in" and "Create event" links (if not logged in)
 Add distance option to front page
-show time around
-default value for time, date, # of players needed, deets
+default value for time
 make time a drop-down
 
 geocoder error handling - AR
