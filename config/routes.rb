@@ -6,6 +6,7 @@ Fuckitimin::Application.routes.draw do
   resource :session
 
   resources :events do
-    resources :attendees, only: [:create, :destroy]
+    resources :attendees, only: [:create]
   end
+  resources :attendees, only: [:destroy]
 end

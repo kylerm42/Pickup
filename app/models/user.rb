@@ -15,7 +15,8 @@
 class User < ActiveRecord::Base
 
   has_many :events
-  has_many :attending_events, foreign_key: :user_id, class_name: "Attendee"
+  has_many :attendees, foreign_key: :user_id, class_name: "Attendee"
+  has_many :attending_events, through: :attendees, source: :event
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|

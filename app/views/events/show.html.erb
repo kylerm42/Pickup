@@ -3,3 +3,9 @@
 <p><%= @event.date %></p>
 <p><%= @event.time %></p>
 <p><%= @event.deets %></p>
+<% attending = current_user.attendees.select{ |attendee| attendee.event_id == @event.id } %>
+<% unless attending.empty? %>
+	<%= button_to "I'm Out!", attendee_url(attending.first), method: :delete %>
+<% else %>
+	<%= button_to "I'm In!", event_attendees_url(@event)%>
+<% end %>
