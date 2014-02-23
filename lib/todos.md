@@ -1,0 +1,27 @@
+
+Kyle/Trav
+---------
+~~Delete / edit events~~
+Add friends list view
+Add 'events I'm attending' list? (maybe)
+Sort events by date
+Show ONLY events from today and later
+Show only day name (e.g. friday)
+Get date in 'create' form (only show next 7 days)
+Get 'looking for' (how many ppl) in 'create' form
+login page - show this for "I'm in" and "Create event" links (if not logged in)
+
+
+Kev/Andrew
+----------
+make buttons / homepage pretty
+make proper responsive
+map on event show page
+Add icons?
+Fix pagination
+Fix copyright
+Change site title
+
+Next steps
+----------
+Log in without Facebook?
