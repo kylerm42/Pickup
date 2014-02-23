@@ -740,6 +740,15 @@ pre code {
 }
 .content {
   margin-top: 60px;
+  width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.content form {
+  width: 400px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 @media (min-width: 768px) {

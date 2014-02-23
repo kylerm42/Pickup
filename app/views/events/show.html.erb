@@ -5,6 +5,7 @@
 <p><%= @event.date %></p>
 <p><%= @event.time_around %></p>
 <p><%= @event.deets %></p>
+
 <% attending = current_user.attendees.select{ |attendee| attendee.event_id == @event.id } %>
 
 <% unless attending.empty? %>
