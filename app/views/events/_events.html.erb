@@ -4,7 +4,7 @@
 	<% next if idx > 2 %>
 	    <div class="col-md-4 portfolio-item">
 	        <h3><%= link_to event.title, event_url(event) %></h3>
-	        <h4><%= event.date.strftime("%A") %>, <%= event.date.localtime %></h4>
+	        <h4><%= event.weekday %>, <%= event.time_around %></h4>
 	        <h4>Looking for: <%=  %></h4>
 	        <h4>Down: <%= event.attendees.count %></h4>
 	    </div>

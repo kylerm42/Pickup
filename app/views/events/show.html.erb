@@ -1,38 +1,42 @@
-<div id="row">
+<div class="row">
   <%= link_to "Back to events", events_url %>
+  <div class="show-event">
 
-  <h3><%= @event.title %></h3>
-  <h4><%= @event.address %></h4>
-  <p><%= @event.date.strftime("%A") %></p>
+    <h1><%= @event.title %></h1>
 
-  <!-- <p><%# @event.time_around %></p> -->
-  <p><%= @event.deets %></p>
+    <h2><%= @event.weekday %></h2>
+    <h2><%= @event.time_around %></h2>
 
-
+    <p><%= @event.deets %></p>
 
 
-  <% if logged_in? %>
+    <a href="https://www.google.com/maps?q=<%= URI.escape(@event.address) %>">
+      <img src="http://maps.googleapis.com/maps/api/streetview?sensor=false&size=400x150&location=<%= URI.escape(@event.address) %>"
+        alt="Google Streetview" />
+    </a>
+    <h4><%= @event.address %></h4><br>
 
-    <% attending = current_user.attendees.find_by_event_id(@event.id) %>
+    <% if logged_in? %>
 
-    <% if attending %>
-    	<%= button_to "I'm Out!", attendee_url(attending), method: :delete, class: "btn-lg btn-warning" %>
+      <% attending = current_user.attendees.find_by_event_id(@event.id) %>
+
+      <% if attending %>
+      	<%= button_to "I'm Out!", attendee_url(attending), method: :delete, class: "btn-lg btn-warning" %>
+      <% else %>
+        <%= button_to "I'm In!", event_attendees_url(@event), class: "btn-lg btn-success"%>
+      <% end %>
+
+      <% if current_user.id == @event.creator_id %>
+        <div class="change-event">
+        	<p>
+            <%= button_to "Edit Event", edit_event_url(@event), class: "btn btn-info btn-md", method: :get %> OR
+            <%= button_to "Cancel Event", event_url(@event), method: :delete, class: "btn btn-danger btn-md" %>
+          </p>
+        </div>
+      <% end %>
+
     <% else %>
-      <%= button_to "I'm In!", event_attendees_url(@event), class: "btn-lg btn-success"%>
+    	<%= button_to "I'm In!", login_url, class: "btn-lg btn-success", method: :get %>
     <% end %>
-
-    <% if current_user.id == @event.creator_id %>
-      <div class="change-event">
-      	<p>
-          <%= button_to "Edit Event", edit_event_url(@event), class: "btn btn-info btn-md", method: :get %> OR
-          <%= button_to "Cancel Event", event_url(@event), method: :delete, class: "btn btn-danger btn-md" %>
-        </p>
-      </div>
-    <% end %>
-
-  <% else %>
-  	<%= button_to "I'm In!", login_url, class: "btn-lg btn-success", method: :get %>
-  <% end %>
-
-
+  </div>
 </div>

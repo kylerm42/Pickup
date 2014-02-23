@@ -24,4 +24,13 @@ class Event < ActiveRecord::Base
   belongs_to :creator, foreign_key: :creator_id, class_name: "User"
 
   self.per_page = 3
+
+  def weekday
+    self.date.strftime("%A")
+  end
+
+  def time_around
+
+    self.date.strftime("Around %H:%M %p")
+  end
 end
