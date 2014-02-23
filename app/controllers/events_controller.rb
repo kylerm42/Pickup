@@ -28,6 +28,9 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.date = @event.date.change({
+      hour: params[:time][0..1].to_i,
+      min: params[:time][3..4].to_i })
     @event.creator_id = current_user.id
 
     if @event.save
@@ -53,7 +56,7 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:title, :address, :deets, :latitude, :longitude, :time, :date, :creator_id)
+      params.require(:event).permit(:title, :address, :deets, :latitude, :longitude, :date, :creator_id)
     end
 
     def get_event
