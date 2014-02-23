@@ -4,7 +4,7 @@ Kyle/Trav
 ~~Delete / edit events~~
 ~~Add friends list view~~
 ~~Add 'events I'm attending' list? (maybe)~~
-Sort events by date
+~~Sort events by date~~
 Show ONLY events from today and later
 Show only day name (e.g. friday)
 Get date in 'create' form (only show next 7 days)

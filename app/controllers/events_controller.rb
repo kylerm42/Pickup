@@ -4,8 +4,12 @@ class EventsController < ApplicationController
   respond_to :js, :html
   def index
     coords = session[:coords]
-    @events = Event.near(coords, 2).paginate(:page => params[:page])
 
+    @events = Event
+      .where("date > ?", DateTime.now - 1.hour)
+      .near(coords, 2)
+      .sort { |e1, e2| e1.date <=> e2.date }
+      .paginate(:page => params[:page])
   end
 
   def show
@@ -70,7 +74,7 @@ class EventsController < ApplicationController
       fb_friends = FbGraph::User.me(current_user.oauth_token).friends
       friend_list = fb_friends.map(&:identifier)
       friends = User.where("uid IN (?)", friend_list).includes(:attending_events)
-      events = friends.map(&:attending_events).flatten.sort { |e1, e2| e1.time <=> e2.time }
+      events = friends.map(&:attending_events).flatten.sort { |e1, e2| e1.date <=> e2.date }
     end
 
 end
