@@ -10,17 +10,21 @@ Show only day name (e.g. friday)
 Get date in 'create' form (only show next 7 days)
 Get 'looking for' (how many ppl) in 'create' form
 login page - show this for "I'm in" and "Create event" links (if not logged in)
-
+automatic "I'm in" on events you create
 
 Kev/Andrew
 ----------
 make buttons / homepage pretty
+geocoder error handling - AR
+make site-wide CSS pretty
 make proper responsive
-map on event show page
+map on event show page - AR
 Add icons?
-Fix pagination
-Fix copyright
-Change site title
+Fix pagination - KF
+Fix copyright - AR
+Change site title - AR
+Create seed file - KF
+Show distance from user in event show page - AR
 
 Next steps
 ----------

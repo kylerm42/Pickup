@@ -2,4 +2,24 @@
  <%= javascript_include_tag "static_pages.js" %>
 <% end %>
 
-<p><%= button_to "Make a thing", new_event_url, method: :get %> <button onclick="getNearby()">Find things around me</button></p>
+<div class="row">
+  <div class="site-logo">
+    <img src="<%=asset_path "pickup.gif"%>">
+  </div>
+</div>
+<div class="row">
+  <div class="home-buttons">
+    <a href="<%= new_event_url %>">
+      <button
+        method="get"
+        class="btn btn-primary btn-lg btn-info">
+        Host a Pickup
+      </button>
+    </a>
+    <button
+      class="btn btn-primary btn-lg btn-warning"
+      onclick="getNearby()">
+      Join a Pickup
+    </button>
+  </div>
+</div>
