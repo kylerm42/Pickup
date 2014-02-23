@@ -46,6 +46,13 @@ class EventsController < ApplicationController
   def destroy
   end
 
+  def friend_index
+    @fb_friends = FbGraph::User.me(current_user.oauth_token).friends
+    @friend_list = @fb_friends.map(&:identifier)
+    @friends = User.where("uid IN (?)", @friend_list).includes(:attending_events)
+    @events = @friends.map(&:attending_events).sort { |e1, e2| e1.time <=> e2.time }
+  end
+
   private
     def event_params
       params.require(:event).permit(:title, :address, :deets, :latitude, :longitude, :time, :date, :creator_id)
