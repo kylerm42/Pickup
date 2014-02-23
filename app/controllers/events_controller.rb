@@ -8,7 +8,7 @@ class EventsController < ApplicationController
 
     @events = Event.near(coords, 2)
       .where("date > ?", (DateTime.now - 1.hour))
-      .order(:date)
+      .order("date")
       .paginate(:page => params[:page])
 
       render 'index'
