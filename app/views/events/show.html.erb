@@ -20,7 +20,7 @@
   <% if current_user.id == @event.creator_id %>
     <div class="change-event">
     	<p>
-        <%= button_to "Edit Event", edit_event_url(@event), class: "btn btn-warning btn-md" %> OR
+        <%= button_to "Edit Event", edit_event_url(@event), class: "btn btn-info btn-md", method: :get %> OR
         <%= button_to "Cancel Event", event_url(@event), method: :delete, class: "btn btn-danger btn-md" %>
       </p>
     </div>
