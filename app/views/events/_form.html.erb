@@ -1,4 +1,7 @@
-<form class="form-horizontal form-create" role="form" action="<%= event.persisted? ? event_url(event) : events_url %>" method="POST" accept-charset="utf-8" >
+<% message = event.persisted? ? 'Update' : 'Create' %>
+
+
+<form class="form-horizontal skinny" role="form" action="<%= event.persisted? ? event_url(event) : events_url %>" method="POST" accept-charset="utf-8" >
 
 	<% if event.persisted? %>
 		<input type="hidden" name="_method" value="PATCH">
@@ -89,5 +92,5 @@
       value="<%= event.people_needed %>">
   </div>
 
-	<button class="btn btn-primary btn-lg" type="submit">Create</button>
+	<button class="btn btn-primary btn-lg" type="submit"><%= message %></button>
 </form>

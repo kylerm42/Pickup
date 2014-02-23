@@ -739,13 +739,13 @@ pre code {
   margin-left: auto;
 }
 .content { /* custom */
-  margin-top: 80px;
+  margin-top: 60px;
   width: 80%;
   margin-right: auto;
   margin-left: auto;
 }
 
-.content .form-create {
+.content .skinny {
   width: 400px;
   margin-right: auto;
   margin-left: auto;

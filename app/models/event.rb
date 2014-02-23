@@ -25,12 +25,20 @@ class Event < ActiveRecord::Base
 
   self.per_page = 3
 
+  ADVICE =[
+    "Don't forget to bring a towel!",
+    "Don't forget to have fun!",
+    "Did your mother say it was okay?",
+    "Some people have all the fun!",
+    "Good things come to those who wait (until the last minute)."
+  ]
+
   def weekday
     self.date.strftime("%A")
   end
 
   def time_around
-
     self.date.strftime("Around %H:%M %p")
   end
+
 end
