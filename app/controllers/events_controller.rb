@@ -5,16 +5,12 @@ class EventsController < ApplicationController
   def index
     coords = session[:coords]
     @events = Event.near(coords, 2)
-
-    render 'index'
   end
 
   def show
-    render 'show'
   end
 
   def edit
-    render 'edit'
   end
 
   def update
@@ -28,7 +24,6 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    render 'new'
   end
 
   def create
@@ -44,7 +39,6 @@ class EventsController < ApplicationController
     end
   end
 
-
   def destroy
     if @event.creator_id == current_user.id
       @event.destroy
@@ -55,6 +49,7 @@ class EventsController < ApplicationController
   def friend_index
     @events = friend_events
   end
+
 
   private
     def event_params
