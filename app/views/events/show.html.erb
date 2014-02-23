@@ -12,3 +12,10 @@
 <% else %>
 	<%= button_to "I'm In!", event_attendees_url(@event)%>
 <% end %>
+
+<% if current_user.id == @event.creator_id %>
+	<%= button_to "Cancel Event", event_url(@event), method: :delete %>
+<% end %>
+<% if current_user.id == @event.creator_id %>
+	<%= button_to "Edit Event", edit_event_url(@event), method: :get %>
+<% end %>

@@ -36,6 +36,7 @@ class EventsController < ApplicationController
     @event.creator_id = current_user.id
 
     if @event.save
+      Attendee.create!(user_id: current_user.id, event_id: @event.id)
       redirect_to event_url(@event)
     else
       flash.now[:errors] = @event.errors.full_messages
@@ -45,10 +46,14 @@ class EventsController < ApplicationController
 
 
   def destroy
+    if @event.creator_id == current_user.id
+      @event.destroy
+      redirect_to events_url
+    end
   end
 
   def friend_index
-
+    @events = friend_events
   end
 
   private
@@ -58,6 +63,13 @@ class EventsController < ApplicationController
 
     def get_event
       @event = Event.find(params[:id])
+    end
+
+    def friend_events
+      fb_friends = FbGraph::User.me(current_user.oauth_token).friends
+      friend_list = fb_friends.map(&:identifier)
+      friends = User.where("uid IN (?)", friend_list).includes(:attending_events)
+      events = friends.map(&:attending_events).flatten.sort { |e1, e2| e1.time <=> e2.time }
     end
 
 end
