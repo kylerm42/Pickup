@@ -2015,6 +2015,9 @@ div.home-buttons button { /* custom */
   width: 100%;
   margin: 20px 0;
 }
+.change-event * {
+  display: inline;
+}
 .btn {
   display: inline-block;
   padding: 6px 12px;
