@@ -17,7 +17,7 @@
 
 class Event < ActiveRecord::Base
   DAYS = %w{Monday Tuesday Wednesday Thursday Friday Saturday Sunday}
-  validates :title, :latitude, :longitude, :date, :time, :creator_id, presence: true
+  validates :title, :latitude, :address, :longitude, :date, :time, :creator_id, presence: true
   validates :date, inclusion: DAYS
 
   has_many :attendees

@@ -15,13 +15,13 @@ class AttendeesController < ApplicationController
   end
 
   def destroy
-    @attendee = Attendee.find(params[:id])
-
-
+    @attendee = Attendee.find_by(event_id: params[:event_id], user_id: current_user.id)
+    return if @attendee.nil?
+    @attendee.destroy
+    redirect_to event_url(params[:event_id])
   end
 
   private
-
     def require_login
       redirect_to event_url(params[:event_id]) unless logged_in?
     end

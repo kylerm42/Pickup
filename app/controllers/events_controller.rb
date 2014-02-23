@@ -13,6 +13,12 @@ class EventsController < ApplicationController
   end
 
   def update
+    if @event.update_attributes(event_params)
+      redirect_to event_url(@event)
+    else
+      flash.now[:errors] = @event.errors.full_messages
+      render :edit
+    end
   end
 
   def new
@@ -36,7 +42,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:title, :deets, :latitude, :longitude, :time, :date, :creator_id)
+    params.require(:event).permit(:title, :address, :deets, :latitude, :longitude, :time, :date, :creator_id)
   end
 
   def get_event
