@@ -2,6 +2,7 @@ class EventsController < ApplicationController
 
   before_action :get_event, only: [:show, :edit, :update, :destroy]
   respond_to :js, :html
+
   def index
     coords = session[:coords]
 
@@ -9,6 +10,8 @@ class EventsController < ApplicationController
       .where("date > ?", (DateTime.now - 1.hour))
       .order(:date)
       .paginate(:page => params[:page])
+
+      render 'index'
   end
 
   def show
@@ -59,10 +62,9 @@ class EventsController < ApplicationController
     @events = friend_events
   end
 
-
   private
     def event_params
-      params.require(:event).permit(:title, :address, :deets, :latitude, :longitude, :date, :creator_id)
+      params.require(:event).permit(:title, :address, :deets, :latitude, :longitude, :date, :creator_id, :people_needed)
     end
 
     def get_event
