@@ -9,20 +9,30 @@
   <p><%= @event.deets %></p>
 
 
-  <% attending = current_user.attendees.select{ |attendee| attendee.event_id == @event.id } %>
 
-  <% unless attending.empty? %>
-  	<%= button_to "I'm Out!", attendee_url(attending.first), method: :delete, class: "btn-lg btn-warning" %>
+
+  <% if logged_in? %>
+
+    <% attending = current_user.attendees.find_by_event_id(@event.id) %>
+
+    <% if attending %>
+    	<%= button_to "I'm Out!", attendee_url(attending), method: :delete, class: "btn-lg btn-warning" %>
+    <% else %>
+      <%= button_to "I'm In!", event_attendees_url(@event), class: "btn-lg btn-success"%>
+    <% end %>
+
+    <% if current_user.id == @event.creator_id %>
+      <div class="change-event">
+      	<p>
+          <%= button_to "Edit Event", edit_event_url(@event), class: "btn btn-info btn-md", method: :get %> OR
+          <%= button_to "Cancel Event", event_url(@event), method: :delete, class: "btn btn-danger btn-md" %>
+        </p>
+      </div>
+    <% end %>
+
   <% else %>
-  	<%= button_to "I'm In!", event_attendees_url(@event), class: "btn-lg btn-success"%>
+  	<%= button_to "I'm In!", login_url, class: "btn-lg btn-success", method: :get %>
   <% end %>
 
-  <% if current_user.id == @event.creator_id %>
-    <div class="change-event">
-    	<p>
-        <%= button_to "Edit Event", edit_event_url(@event), class: "btn btn-info btn-md", method: :get %> OR
-        <%= button_to "Cancel Event", event_url(@event), method: :delete, class: "btn btn-danger btn-md" %>
-      </p>
-    </div>
-  <% end %>
+
 </div>

@@ -5,9 +5,8 @@ class EventsController < ApplicationController
   def index
     coords = session[:coords]
 
-    @events = Event
+    @events = Event.near(coords, 2)
       .where("date > ?", (DateTime.now - 1.hour))
-      .near(coords, 2)
       .order(:date)
       .paginate(:page => params[:page])
   end

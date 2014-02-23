@@ -1,19 +1,21 @@
 
 Kyle/Trav
 ---------
-~~Delete / edit events~~
-~~Add friends list view~~
-~~Add 'events I'm attending' list? (maybe)~~
-~~Sort events by date~~
-~~Show ONLY events from today and later~~
-~~Show only day name (e.g. friday)~~
-~~Get date in 'create' form (only show next 7 days)~~
-~~Get 'looking for' (how many ppl) in 'create' form~~
-login page - show this for "I'm in" and "Create event" links (if not logged in)
-~~automatic "I'm in" on events you create~~
+~~Add friends list view~~ sort by date
+~~Sort events by date~~ day working but not time
+-db seeding-
+heroku
+
 
 Kev/Andrew
 ----------
+~~Show only day name (e.g. friday)~~ extra day for today
+login page - show this for "I'm in" and "Create event" links (if not logged in)
+Add distance option to front page
+
+
+
+fix attendees bug on show.html.erb for events
 default value for time, date, # of players needed, deets
 display time around
 make buttons / homepage pretty
