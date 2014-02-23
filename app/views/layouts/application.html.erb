@@ -8,26 +8,7 @@
 </head>
 <body>
 
-	<% if current_user %>
-		<a href="/signout" role="button" alt="sign out" >
-			<i class="icon-signout"></i> Log Out
-		</a>
-    <% else  	%>
-		<a href="auth/facebook" role="button" alt="sign in">
-			<i class="icon-signin"></i> This is a link
-		</a>
-	<% end %>
-
-
-<% if flash[:errors] %>
-	<% flash[:errors].each do |error| %>
-	<%= error %>
-	<% end %>
-<% end %>
-
-
-
-<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+	<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -67,6 +48,13 @@
 
 <div class="container">
   <div class="content">
+
+		<% if flash[:errors] %>
+			<% flash[:errors].each do |error| %>
+			<%= error %>
+			<% end %>
+		<% end %>
+
     <%= yield %>
   </div>
 </div>
