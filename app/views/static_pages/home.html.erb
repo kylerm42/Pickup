@@ -4,16 +4,15 @@
 <% unless session[:coords] %>
   <script>getNearby()</script>
 <% end %>
-<div class="row">
-  <div>
-    <img class="site-logo" src="<%=asset_path "pickup.gif"%>">
-
+<div class="row" style="text-align: center;">
+  <div >
+    <h1 style="font-size: 76px; font-weight: bold;">PickUp!</h1>
   </div>
 </div>
 
 <div class="row">
 
-  <form class="skinny" action="<%= events_url %>" method="GET"> <!-- Need to get the right form action / route here -->
+  <form action="<%= events_url %>" method="GET" style="text-align: center;"> <!-- Need to get the right form action / route here -->
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <label for "distance">
         Find stuff to do within
