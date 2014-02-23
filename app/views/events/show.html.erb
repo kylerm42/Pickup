@@ -8,14 +8,15 @@
 <% attending = current_user.attendees.select{ |attendee| attendee.event_id == @event.id } %>
 
 <% unless attending.empty? %>
-	<%= button_to "I'm Out!", attendee_url(attending.first), method: :delete %>
+	<%= button_to "I'm Out!", attendee_url(attending.first), method: :delete, class: "btn-lg btn-warning" %>
 <% else %>
-	<%= button_to "I'm In!", event_attendees_url(@event)%>
+	<%= button_to "I'm In!", event_attendees_url(@event), class: "btn-lg btn-success"%>
 <% end %>
 
 <% if current_user.id == @event.creator_id %>
-	<%= button_to "Cancel Event", event_url(@event), method: :delete %>
+	<%= button_to "Cancel Event", event_url(@event), method: :delete, class: "btn btn-danger btn-md" %>
 <% end %>
+
 <% if current_user.id == @event.creator_id %>
-	<%= button_to "Edit Event", edit_event_url(@event), method: :get %>
+	<%= button_to "Edit Event", edit_event_url(@event), method: :get, class: "btn btn-info btn-md" %>
 <% end %>

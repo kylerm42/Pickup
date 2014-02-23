@@ -738,9 +738,9 @@ pre code {
   margin-right: auto;
   margin-left: auto;
 }
-.content {
+.content { /* custom */
   margin-top: 60px;
-  width: 800px;
+  width: 80%;
   margin-right: auto;
   margin-left: auto;
 }
@@ -2004,8 +2004,10 @@ div.home-buttons { /* custom */
   margin-left: auto;
   margin-right: auto;
 }
-.site-logo {
-  width: 635px;
+.site-logo { /* custom */
+  /*width: 635px;*/
+  height: auto;
+  display: block;
   margin-left: auto;
   margin-right: auto;
 }
