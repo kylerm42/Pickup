@@ -3,13 +3,18 @@ class EventsController < ApplicationController
   before_action :get_event, only: [:show, :edit, :update, :destroy]
 
   def index
-    @events = Event.all
+    coords = session[:coords]
+    @events = Event.near(coords, 2)
+
+    render 'index'
   end
 
   def show
+    render 'show'
   end
 
   def edit
+    render 'edit'
   end
 
   def update
@@ -23,6 +28,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    render 'new'
   end
 
   def create
@@ -41,12 +47,12 @@ class EventsController < ApplicationController
   end
 
   private
-  def event_params
-    params.require(:event).permit(:title, :address, :deets, :latitude, :longitude, :time, :date, :creator_id)
-  end
+    def event_params
+      params.require(:event).permit(:title, :address, :deets, :latitude, :longitude, :time, :date, :creator_id)
+    end
 
-  def get_event
-    @event = Event.find(params[:id])
-  end
+    def get_event
+      @event = Event.find(params[:id])
+    end
 
 end

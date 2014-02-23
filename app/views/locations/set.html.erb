@@ -1,0 +1,20 @@
+<form action="<%= new_form_location_url %>"
+  method="post"
+  accept-charset="utf-8">
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+  <label
+    for="address">
+    Please enter your address:
+  </label>
+  <input
+    id="address"
+    name="address"
+    type="text">
+
+
+  <button>Find me</button>
+</form>

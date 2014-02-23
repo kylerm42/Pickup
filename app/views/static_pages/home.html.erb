@@ -1,0 +1,5 @@
+<% content_for :javascript_includes do %>
+ <%= javascript_include_tag "static_pages.js" %>
+<% end %>
+
+<p><%= button_to "Make a thing", new_event_url, method: :get %> <button onclick="getNearby()">Find things around me</button></p>
