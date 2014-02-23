@@ -15,6 +15,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    store_target_location unless logged_in?
     render 'show'
   end
 
@@ -77,6 +78,13 @@ class EventsController < ApplicationController
       friend_list = fb_friends.map(&:identifier)
       friends = User.where("uid IN (?)", friend_list).includes(:attending_events)
       events = friends.map(&:attending_events).flatten.sort { |e1, e2| e1.date <=> e2.date }
+    end
+
+  private
+
+    def store_target_location
+      p request.url
+      session[:return_to] = request.url
     end
 
 end
