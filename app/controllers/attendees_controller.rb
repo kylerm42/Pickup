@@ -25,5 +25,4 @@ class AttendeesController < ApplicationController
     def require_login
       redirect_to event_url(params[:event_id]) unless logged_in?
     end
-
 end
