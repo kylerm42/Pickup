@@ -1,7 +1,3 @@
-<% @events.each do |event| %>
-	<% event.each do |vent| %>
-		<% if vent %>
-			<%= link_to vent.title, event_url(vent) %>
-		<% end %>
-	<% end %>
+<% @events.flatten.each do |event| %>
+	<%= link_to event.title, event_url(event) %>
 <% end %>
