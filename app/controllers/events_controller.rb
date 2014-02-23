@@ -4,23 +4,13 @@ class EventsController < ApplicationController
   respond_to :js, :html
   def index
     coords = session[:coords]
- #   @events = Event.near(coords, 2).paginate(:page => params[:page])
     @events = Event.paginate(:page => params[:page])
- 
-   # respond_to do |format|
-#         format.html # index.html.erb
-#         format.json { render json: @events}
-#         format.js
-#       end
-#     # render 'index'
   end
 
   def show
-    render 'show'
   end
 
   def edit
-    render 'edit'
   end
 
   def update
@@ -34,14 +24,17 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    render 'new'
   end
 
   def create
     @event = Event.new(event_params)
+    @event.date = @event.date.change({
+      hour: params[:time][0..1].to_i,
+      min: params[:time][3..4].to_i })
     @event.creator_id = current_user.id
 
     if @event.save
+      Attendee.create!(user_id: current_user.id, event_id: @event.id)
       redirect_to event_url(@event)
     else
       flash.now[:errors] = @event.errors.full_messages
@@ -49,21 +42,32 @@ class EventsController < ApplicationController
     end
   end
 
-
   def destroy
+    if @event.creator_id == current_user.id
+      @event.destroy
+      redirect_to events_url
+    end
   end
 
   def friend_index
-
+    @events = friend_events
   end
+
 
   private
     def event_params
-      params.require(:event).permit(:title, :address, :deets, :latitude, :longitude, :time, :date, :creator_id)
+      params.require(:event).permit(:title, :address, :deets, :latitude, :longitude, :date, :creator_id)
     end
 
     def get_event
       @event = Event.find(params[:id])
+    end
+
+    def friend_events
+      fb_friends = FbGraph::User.me(current_user.oauth_token).friends
+      friend_list = fb_friends.map(&:identifier)
+      friends = User.where("uid IN (?)", friend_list).includes(:attending_events)
+      events = friends.map(&:attending_events).flatten.sort { |e1, e2| e1.time <=> e2.time }
     end
 
 end

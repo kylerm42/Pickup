@@ -9,12 +9,12 @@
         </div>
 
     </div>
-
   
 			
 			<%= render "events", :events => @events  %>
 			
 			<%= link_to 'Load More Events', events_path(:page => @events.next_page), :class => 'load-more-events', :remote => true if @events.next_page %>
+
     <hr>
 
     <div class="row text-center">

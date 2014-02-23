@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140222232425) do
+ActiveRecord::Schema.define(version: 20140223045926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,15 +31,13 @@ ActiveRecord::Schema.define(version: 20140222232425) do
     t.text     "deets"
     t.float    "latitude",   null: false
     t.float    "longitude",  null: false
-    t.string   "date",       null: false
-    t.time     "time",       null: false
     t.integer  "creator_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "address"
+    t.datetime "date"
   end
 
-  add_index "events", ["date"], name: "index_events_on_date", using: :btree
   add_index "events", ["latitude"], name: "index_events_on_latitude", using: :btree
   add_index "events", ["longitude"], name: "index_events_on_longitude", using: :btree
   add_index "events", ["title"], name: "index_events_on_title", using: :btree
