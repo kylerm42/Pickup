@@ -43,6 +43,7 @@ class EventsController < ApplicationController
     end
   end
 
+
   def destroy
   end
 

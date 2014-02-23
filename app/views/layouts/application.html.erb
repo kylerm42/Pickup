@@ -7,28 +7,77 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<ul>
+
 	<% if current_user %>
-	<li class="seetings hidden-phone">
 		<a href="/signout" role="button" alt="sign out" >
 			<i class="icon-signout"></i> Log Out
 		</a>
-	</li>
-	<% else  	%>
-	<li class="settings hidden-phone">
+    <% else  	%>
 		<a href="auth/facebook" role="button" alt="sign in">
 			<i class="icon-signin"></i> This is a link
 		</a>
-	</li>
 	<% end %>
-</ul>
+
 
 <% if flash[:errors] %>
 	<% flash[:errors].each do |error| %>
 	<%= error %>
 	<% end %>
 <% end %>
-<%= yield %>
+
+
+
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Pickup!</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                  <% if current_user %>
+                		<a href="/signout" role="button" alt="sign out" >
+                			<i class="icon-signout"></i> Log Out
+                		</a>
+                    <li>
+                      <%= link_to "My Events", user_path(current_user) %>
+                    </li>
+                  </li>
+                  <% else	%>
+                		<a href="auth/facebook" role="button" alt="sign in">
+                			<i class="icon-signin"></i> Log In
+                		</a>
+
+                  </li>
+                	<% end %>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<div class="container">
+  <div class="content">
+    <%= yield %>
+  </div>
+</div>
+
+
+
+<!-- /.container -->
+
+<!-- JavaScript -->
+<!-- <script src="js/jquery-1.10.2.js"></script> -->
+<script src="js/bootstrap.js"></script>
 
 </body>
 </html>

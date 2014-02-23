@@ -24,4 +24,8 @@ class Event < ActiveRecord::Base
 
   has_many :attendees
   belongs_to :creator, foreign_key: :creator, class_name: "User"
+
+  def time_around
+    self.time.strftime("Around %I:%M %p")
+  end
 end

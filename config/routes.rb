@@ -5,6 +5,7 @@ Fuckitimin::Application.routes.draw do
   get 'signout' => 'sessions#destroy', as: 'signout'
   resource :session
 
+  resources :users, only: [:show]
   resources :events do
     get "friend_index", on: :collection
     resources :attendees, only: [:create]
