@@ -32,6 +32,7 @@ class EventsController < ApplicationController
   end
 
   def new
+    redirect_to login_url unless logged_in?
     @event = Event.new
   end
 

@@ -1,10 +1,7 @@
 
 Kyle/Trav
 ---------
-~~Add friends list view~~ sort by date
-~~Sort events by date~~ day working but not time
 -db seeding-
-heroku
 
 
 Kev/Andrew
