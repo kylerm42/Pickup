@@ -745,7 +745,7 @@ pre code {
   margin-left: auto;
 }
 
-.content form {
+.content .form-create {
   width: 400px;
   margin-right: auto;
   margin-left: auto;
@@ -2011,9 +2011,9 @@ div.home-buttons { /* custom */
   margin-left: auto;
   margin-right: auto;
 }
-div.home-buttons button {
+div.home-buttons button { /* custom */
   width: 100%;
-  margin: 20px;
+  margin: 20px 0;
 }
 .btn {
   display: inline-block;
