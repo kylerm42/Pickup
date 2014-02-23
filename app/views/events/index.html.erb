@@ -10,25 +10,11 @@
 
     </div>
 
-    <div class="row">
-      <% @events.each_with_index do |event, idx| %>
-      	<!-- <%# link_to event.title, event_url(event) %> -->
-
-        <div class="col-md-4 portfolio-item">
-            <!-- <a href="<%# event_url(event) %>">
-                <img class="img-responsive" src="http://placehold.it/700x400">
-            </a> -->
-            <h3><%= link_to event.title, event_url(event) %>
-            </h3>
-            <h4><%= event.time_around %>, <%= event.date %></h4>
-            <h4>Looking for: <%=  %></h4>
-            <h4>Down: <%= event.attendees.count %></h4>
-            <!-- <p><%# event.deets %></p> -->
-        </div>
-        <%= '</div><div class="clear"></div>'.html_safe if idx % 3 == 2 %>
-        <%= '<div class="row">'.html_safe if idx % 3 == 2 %>
-      <% end %>
-    </div>
+  
+			
+			<%= render "events", :events => @events  %>
+			
+			<%= link_to 'Load More Events', events_path(:page => @events.next_page), :class => 'load-more-events', :remote => true if @events.next_page %>
     <hr>
 
     <div class="row text-center">

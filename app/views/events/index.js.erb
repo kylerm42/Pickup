@@ -1,0 +1,6 @@
+$('.events').append('<%= escape_javascript(render partial: "events", :locals => { :events => @events }) %>');
+$('a.load-more-events').attr('href', '<%= events_path page: @events.next_page %>');
+ 
+<% if @events.current_page == @events.total_pages %>
+  $('a.load-more-events').remove();
+<% end %>

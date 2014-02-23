@@ -1,0 +1,13 @@
+<div class="events">
+<div class="row">	
+	<% events.each_with_index do |event, idx| %>
+	<% next if idx > 2 %>
+	    <div class="col-md-4 portfolio-item">
+	        <h3><%= link_to event.title, event_url(event) %></h3>
+	        <h4><%= event.time_around %>, <%= event.date %></h4>
+	        <h4>Looking for: <%=  %></h4>
+	        <h4>Down: <%= event.attendees.count %></h4>
+	    </div>
+	<% end %>
+</div>
+</div>

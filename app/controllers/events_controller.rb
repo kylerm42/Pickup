@@ -1,12 +1,18 @@
 class EventsController < ApplicationController
 
   before_action :get_event, only: [:show, :edit, :update, :destroy]
-
+  respond_to :js, :html
   def index
     coords = session[:coords]
-    @events = Event.near(coords, 2)
-
-    render 'index'
+ #   @events = Event.near(coords, 2).paginate(:page => params[:page])
+    @events = Event.paginate(:page => params[:page])
+ 
+   # respond_to do |format|
+#         format.html # index.html.erb
+#         format.json { render json: @events}
+#         format.js
+#       end
+#     # render 'index'
   end
 
   def show

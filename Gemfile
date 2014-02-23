@@ -14,7 +14,7 @@ gem 'omniauth-facebook'
 gem 'devise'
 gem 'oa-oauth'
 gem 'fb_graph'
-
+gem 'will_paginate', '~> 3.0'
 
 group :development do
   gem 'binding_of_caller'

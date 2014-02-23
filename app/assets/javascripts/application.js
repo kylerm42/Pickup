@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require jquery.inview.js
+//= require static_pages.js
+//= require bootstrap.js
