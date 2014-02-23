@@ -3,8 +3,10 @@
 
   <h3><%= @event.title %></h3>
   <h4><%= @event.address %></h4>
-  <p><%= @event.date %></p>
+  <p><%= @event.day_of_week %></p>
   <p><%= @event.time_around %></p>
+
+  <!-- <p><%# @event.time_around %></p> -->
   <p><%= @event.deets %></p>
 
 
@@ -19,8 +21,8 @@
   <% if current_user.id == @event.creator_id %>
     <div class="change-event">
     	<p>
-        <%= link_to "Edit Event", edit_event_url(@event) %>
-        <%= button_to "Cancel Event", event_url(@event), method: :delete, class: "btn btn-danger btn-md", style: "display:inline" %>
+        <%= link_to "Edit Event", edit_event_url(@event) %> OR
+        <%= button_to "Cancel Event", event_url(@event), method: :delete, class: "btn btn-danger btn-md" %>
       </p>
     </div>
   <% end %>

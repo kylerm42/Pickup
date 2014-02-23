@@ -5,12 +5,15 @@ class EventsController < ApplicationController
   def index
     coords = session[:coords]
     @events = Event.near(coords, 2)
+    render 'index'
   end
 
   def show
+    render 'show'
   end
 
   def edit
+    render 'edit'
   end
 
   def update
