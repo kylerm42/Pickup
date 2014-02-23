@@ -10,7 +10,7 @@ class LocationsController < ApplicationController
     coords = Geocoder.coordinates(params[:address])
 
     session[:coords] = coords
-    redirect_to events_url # form request will redirect the user
+    redirect_to root_url # form request will redirect the user
   end
 
   def set

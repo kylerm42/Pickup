@@ -14,7 +14,7 @@ function getNearby() {
      type: "POST",
      data: JSON.stringify([latitude, longitude]),
      contentType: "application/json",
-     success: goToEventsIndex()
+     // success: goToEventsIndex()
     });
 
   }

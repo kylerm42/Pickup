@@ -1,12 +1,15 @@
 class EventsController < ApplicationController
-
   before_action :get_event, only: [:show, :edit, :update, :destroy]
+  before_action :store_target_location, only: [:index, :show, :friend_index]
   respond_to :js, :html
 
   def index
     coords = session[:coords]
+    p coords
+    distance = params[:distance].to_i || 2
+    p distance
 
-    @events = Event.near(coords, 2)
+    @events = Event.near(coords, distance)
       .where("date > ?", (DateTime.now - 1.hour))
       .order("date")
       .paginate(:page => params[:page])
@@ -61,7 +64,11 @@ class EventsController < ApplicationController
   end
 
   def friend_index
-    @events = friend_events
+    if logged_in?
+      @events = friend_events
+    else
+      redirect_to login_url
+    end
   end
 
   private
@@ -83,7 +90,6 @@ class EventsController < ApplicationController
   private
 
     def store_target_location
-      p request.url
       session[:return_to] = request.url
     end
 

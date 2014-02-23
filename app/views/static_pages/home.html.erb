@@ -1,7 +1,9 @@
 <% content_for :javascript_includes do %>
  <%= javascript_include_tag "static_pages.js" %>
 <% end %>
-
+<% unless session[:coords] %>
+  <script>getNearby()</script>
+<% end %>
 <div class="row">
   <div>
     <img class="site-logo" src="<%=asset_path "pickup.gif"%>">
@@ -11,7 +13,7 @@
 
 <div class="row">
 
-  <form class="skinny" action="" method="POST"> <!-- Need to get the right form action / route here -->
+  <form class="skinny" action="<%= events_url %>" method="GET"> <!-- Need to get the right form action / route here -->
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <label for "distance">
         Find stuff to do within
@@ -25,7 +27,7 @@
     <div class="home-buttons">
       <button
         class="btn btn-primary btn-lg btn-warning"
-        onclick="getNearby()">
+        >
         Join a Pickup
       </button>
     </div>
