@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   respond_to :js, :html
   def index
     coords = session[:coords]
-    @events = Event.paginate(:page => params[:page])
+    @events = Event.near(coords, 2).paginate(:page => params[:page])
   end
 
   def show
