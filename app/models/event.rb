@@ -22,5 +22,13 @@ class Event < ActiveRecord::Base
   has_many :attendees
   belongs_to :creator, foreign_key: :creator, class_name: "User"
 
+<<<<<<< HEAD
   self.per_page = 3
+=======
+  def time_around
+  end
+
+  def day_of_week
+  end
+>>>>>>> e4ac5ea23a370dd2c5dfb9bbc957b40c86fc3058
 end

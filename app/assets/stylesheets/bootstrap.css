@@ -734,18 +734,18 @@ pre code {
 .container {
   padding-right: 15px;
   padding-left: 15px;
-  padding-top: 20px;
+
   margin-right: auto;
   margin-left: auto;
 }
-.content {
-  margin-top: 60px;
-  width: 800px;
+.content { /* custom */
+  margin-top: 80px;
+  width: 80%;
   margin-right: auto;
   margin-left: auto;
 }
 
-.content form {
+.content .form-create {
   width: 400px;
   margin-right: auto;
   margin-left: auto;
@@ -2004,14 +2004,23 @@ div.home-buttons { /* custom */
   margin-left: auto;
   margin-right: auto;
 }
-.site-logo {
-  width: 635px;
+.site-logo { /* custom */
+  /*width: 635px;*/
+  height: auto;
+  display: block;
   margin-left: auto;
   margin-right: auto;
 }
-div.home-buttons button {
+div.home-buttons button { /* custom */
   width: 100%;
-  margin: 20px;
+  margin: 20px 0;
+}
+
+.change-event {
+  margin: 30px 0;
+}
+.change-event * {
+  display: inline;
 }
 .btn {
   display: inline-block;

@@ -24,9 +24,9 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
                 <li>
-                  <% if current_user %>
+                  <% if logged_in? %>
                 		<a href="/signout" role="button" alt="sign out" >
-                			<i class="icon-signout"></i> Log Out
+                			Log Out
                 		</a>
                     <li>
                       <%= link_to "My Events", user_path(current_user) %>
@@ -34,7 +34,7 @@
                   </li>
                   <% else	%>
                 		<a href="auth/facebook" role="button" alt="sign in">
-                			<i class="icon-signin"></i> Log In
+                			Log In
                 		</a>
 
                   </li>
@@ -58,7 +58,16 @@
     <%= yield %>
   </div>
 </div>
-
+<div class="container">
+    <hr>
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; Travis and Kevin and Kyle and Andrew</p>
+            </div>
+        </div>
+    </footer>
+</div>
 
 
 <!-- /.container -->
