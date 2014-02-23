@@ -1,7 +1,7 @@
 <div class="events">
 <div class="row">
 	<% events.each_with_index do |event, idx| %>
-	<% next if idx > 2 %>
+	<% break if idx > 2 %>
 	    <div class="col-md-4 portfolio-item">
 	        <h3><%= link_to event.title, event_url(event) %></h3>
 	        <h4><%= event.weekday %>, <%= event.time_around %></h4>

@@ -5,10 +5,32 @@
 <div class="row">
   <div>
     <img class="site-logo" src="<%=asset_path "pickup.gif"%>">
-    <h1 align="center">Find Stuff To Do :)</h1>
+
   </div>
 </div>
+
 <div class="row">
+
+  <form class="skinny" action="" method="POST"> <!-- Need to get the right form action / route here -->
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <label for "distance">
+        Find stuff to do within
+        <select id="distance" name="distance">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select> miles of my location
+      </label>
+    <div class="home-buttons">
+      <button
+        class="btn btn-primary btn-lg btn-warning"
+        onclick="getNearby()">
+        Join a Pickup
+      </button>
+    </div>
+  </form>
+
   <div class="home-buttons">
     <a href="<%= new_event_url %>">
       <button
@@ -17,10 +39,5 @@
         Host a Pickup
       </button>
     </a>
-    <button
-      class="btn btn-primary btn-lg btn-warning"
-      onclick="getNearby()">
-      Join a Pickup
-    </button>
   </div>
 </div>
