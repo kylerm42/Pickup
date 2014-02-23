@@ -6,8 +6,7 @@ class EventsController < ApplicationController
   def index
     coords = session[:coords]
     p coords
-    distance = params[:distance].to_i || 2
-    distance = 2 if distance == 0
+    distance = params[:distance] || 2
 
     @events = Event.near(coords, distance)
       .where("date > ?", (DateTime.now - 1.hour))

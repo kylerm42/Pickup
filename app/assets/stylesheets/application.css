@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+.clickable {
+  cursor: pointer;
+
+}

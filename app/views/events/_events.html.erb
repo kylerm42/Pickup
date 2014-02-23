@@ -2,7 +2,7 @@
 <div class="row">
 	<% events.each_with_index do |event, idx| %>
 	<% break if idx > 2 %>
-	    <div class="col-md-4 portfolio-item">
+	    <div class="col-md-4 portfolio-item clickable" onClick="window.location = '<%= event_path(event) %>'">
 	        <h3><%= link_to event.title, event_url(event) %></h3>
 	        <h4><%= event.weekday %>, <%= event.time_around %></h4>
 	        <h4>Looking for: <%= event.people_needed %></h4>
