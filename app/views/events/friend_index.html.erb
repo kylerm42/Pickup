@@ -1,3 +1,17 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Pickup Events
+            <small><%= link_to "Happening Nearby", events_url %></small><small> / </small>
+            <small>Friends Attending</small>
+        </h1>
+    </div>
+ </div>
+
 <% @events.each do |event| %>
-	<%= link_to event.title, event_url(event) %>
+  <%= link_to event.title, event_url(event) %>
 <% end %>
+
+	<%# render "events", :events => @events  %>
+
+	<%# link_to 'Load More Events', events_path(:page => @events.next_page), :class => 'load-more-events', :remote => true if @events.next_page %>
+<hr>

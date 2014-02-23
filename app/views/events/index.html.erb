@@ -1,14 +1,13 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Pickup Events
-                <small>Close to your location</small><small> / </small>
-                <small>Friends attending</small>
+                <small>Happening Nearby</small><small> / </small>
+                <small><%= link_to "Friends Attending", friend_index_events_url %></small>
             </h1>
         </div>
      </div>
 
-			<%= render "events", :events => @events  %>
+		<%= render "events", :events => @events  %>
 
-			<%= link_to 'Load More Events', events_path(:page => @events.next_page), :class => 'load-more-events', :remote => true if @events.next_page %>
-    <hr>
-</div>
+		<%= link_to 'Load More Events', events_path(:page => @events.next_page), :class => 'load-more-events', :remote => true if @events.next_page %>
+   <hr>

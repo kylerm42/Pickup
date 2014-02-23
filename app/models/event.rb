@@ -30,7 +30,10 @@ class Event < ActiveRecord::Base
     "Don't forget to have fun!",
     "Did your mother say it was okay?",
     "Some people have all the fun!",
-    "Good things come to those who wait (until the last minute)."
+    "Good things come to those who wait (until the last minute).",
+    "Better than sitting around, I guess.",
+    "What are you gonna miss, TV?",
+    "What else would you be doing?"
   ]
 
   def weekday

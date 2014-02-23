@@ -15,6 +15,7 @@
   <div class="show-event">
     <h2><%= @event.weekday %></h2>
     <h2><%= @event.time_around %></h2>
+    <h2>Looking for: <%= @event.people_needed %></h2><h2>Down: <%= @event.attendees.count %></h2>
 
     <p><%= @event.deets %></p>
 
